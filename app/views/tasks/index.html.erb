@@ -1,0 +1,11 @@
+<h1>My tasks</h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <p><%= task.title %></p>
+      <p><%= task.description %></p>
+      <p><%= task.created_at %></p>
+      <%= link_to 'Delete', task_path(task), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+    </li>
+  <% end %>
+</ul>
