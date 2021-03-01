@@ -5,7 +5,13 @@
       <p><%= task.title %></p>
       <p><%= task.description %></p>
       <p><%= task.created_at %></p>
-      <%= link_to 'Delete', task_path(task), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+      <%= button_to 'Delete', task_path(task), data: {:confirm => 'Are you sure?'}, :method => :delete %>
+      <%= button_to 'Edit', edit_task_path(task), :method => :get %>
     </li>
+
   <% end %>
 </ul>
+<hr>
+<hr>
+<hr>
+<%= button_to "New Task", { :action => "new" }, :method => :get %>
