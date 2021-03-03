@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to tasks_path
     else
-      redirect_to new_tasks_path(@task)
+      render :new
     end
   end
 
