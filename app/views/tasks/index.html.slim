@@ -1,0 +1,15 @@
+= button_to "New Task", { action: 'new' }, method: :get
+h1
+  | My tasks
+ul
+  - @tasks.each do |task|
+    li
+      p
+        = task.title
+      p
+        = task.description
+      p
+        = task.created_at
+      = button_to 'Delete', task_path(task), data: {:confirm => 'Are you sure?'}, :method => :delete
+      = button_to 'Edit', edit_task_path(task), :method => :get
+hr
