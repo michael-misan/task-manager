@@ -1,0 +1,18 @@
+li
+  .list-group-item.list-group-item-action
+    p
+      = task.title
+    p
+      = task.description
+    p
+      = task.created_at
+      .btn-group
+        = button_to 'Delete', task_path(task), data: {:confirm => 'Are you sure?'}, class: 'btn btn-primary', :method => :delete
+        = button_to 'Edit', edit_task_path(task), :method => :get, class: 'btn btn-secondary'
+        - if task.active.nil?
+          = button_to 'Mark as Active', task_path(id: task.id, task: {active: true}), data: {:confirm => 'Are you sure?'}, class: 'btn btn-primary', :method => :patch
+        - elsif task.active
+          = button_to 'Mark as Done', task_path(id: task.id, task: {active: false}), data: {:confirm => 'Are you sure?'}, class: 'btn btn-primary', :method => :patch
+        - else
+          = button_to 'Mark as Active', task_path(id: task.id, task: {active: true}), data: {:confirm => 'Are you sure?'}, class: 'btn btn-primary', :method => :patch
+          = button_to 'Mark as Archived', task_path(id: task.id, task: {active: nil}), data: {:confirm => 'Are you sure?'}, class: 'btn btn-primary', :method => :patch
