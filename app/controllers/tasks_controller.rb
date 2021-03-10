@@ -3,7 +3,9 @@ class TasksController < ApplicationController
   before_action :task, only: [:new, :create]
 
   def index
-    @tasks = Task.order(created_at: :desc)
+    @completed_tasks = Task.where(active: false).order(created_at: :desc)
+    @active_tasks = Task.where(active: true).order(created_at: :desc)
+    @archived_tasks = Task.where(active: nil).order(created_at: :desc)
   end
 
   def destroy
@@ -47,6 +49,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description)
+    params.require(:task).permit(:title, :description, :active)
   end
 end

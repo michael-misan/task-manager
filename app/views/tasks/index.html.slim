@@ -1,15 +1,21 @@
-= button_to "New Task", { action: 'new' }, method: :get
-h1
+.text-center
+  = button_to "New Task", { action: 'new' }, method: :get, class: 'btn btn-success'
+
+h1.text-center
   | My tasks
-ul
-  - @tasks.each do |task|
-    li
-      p
-        = task.title
-      p
-        = task.description
-      p
-        = task.created_at
-      = button_to 'Delete', task_path(task), data: {:confirm => 'Are you sure?'}, :method => :delete
-      = button_to 'Edit', edit_task_path(task), :method => :get
-hr
+.row
+  .col-sm
+    h2 Active Tasks
+    ul
+     .list-group
+       = render partial: 'task', collection: @active_tasks, as: :task
+  .col-sm
+    h2 Done Tasks
+    ul
+     .list-group
+       = render partial: 'task', collection: @completed_tasks, as: :task
+  .col-sm
+    h2 Archived Tasks
+    ul
+     .list-group
+      = render partial: 'task', collection: @archived_tasks, as: :task
