@@ -8,9 +8,39 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      ul {
+        list-style-type: none; /* Отступ слева в браузере Firefox, Safari, Chrome */
+        padding: 30px; /* Поля вокруг текста */
+        }
+      body {
+        margin-left: 0px; /* Отступ слева */
+        }
+      h2 {
+        margin-left: 50px;
+        }
+      p.btn-group {
+        height:200px;
+        width:200px;
+        }
+    </style>
   </head>
 
   <body>
+    <!-- Just an image -->
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <%= image_tag('Kokos.png', class: "navbar-brand", size: "40x50", alt: "") %>
+        Kokos-m
+      </a>
+    </nav>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand"></a>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Пошук" aria-label="Пошук">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Пошук</button>
+      </form>
+</nav>
     <%= yield %>
   </body>
 </html>
